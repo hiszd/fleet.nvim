@@ -78,10 +78,6 @@ local COLORS = {
   }
 }
 
-function Zion1()
-
-end
-
 local get_current_mode = function()
   if vim.g.background == 'dark' or vim.g.background == 'light' then
     return vim.g.background
@@ -102,9 +98,6 @@ local get_color = function(color_name, mode)
   end
   return COLORS[selected_mode][color_name]
 end
-
--- Unused colors
--- Color.new('paleblue', '#8796B0')
 
 local M = {}
 function M.load()
@@ -1040,18 +1033,17 @@ function M.load()
 
   -- Load icons for kyazdani42/nvim-web-devicons
   M.icon_load()
+end
 
-  if packer_plugins['feline.nvim'] and packer_plugins['feline.nvim'].loaded then
-    local theme = {
-      red = get_color('red'),
-      green = get_color('green'),
-      blue = get_color('blue'),
-      fg = get_color('linefg'),
-      bg = get_color('linebg')
-    }
-    require('feline').use_theme(theme)
-  end
-
+function M.load_feline()
+  local theme = {
+    red = get_color('red'),
+    green = get_color('green'),
+    blue = get_color('blue'),
+    fg = get_color('linefg'),
+    bg = get_color('linebg')
+  }
+  require('feline').use_theme(theme)
 end
 
 function M.icon_load()
