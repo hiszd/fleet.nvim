@@ -21,17 +21,26 @@ local COLORS = {
   dark = {
     -- bg = '#001b24',
     -- bg = '#00253d',
-    bg = '#09151b',
+    -- bg = '#09151b',
+    bg = '#111618',
     fg = '#eff0eb',
+    linefg = '#eff0eb',
+    linebg = '#585853',
     red = '#ff5c57',
     yellow = '#f3f99d',
     green = '#68A247',
     blue = '#57c7ff',
+    blue2 = '#004e75',
     cyan = '#9aedfe',
     purple = '#ff6ac1',
     orange = '#ff9f43',
     brown = '#b2643c',
     pink = '#FF5370',
+    invisibles = '#65737E',
+    caret = '#54555e',
+    guides = '#424242',
+    lsp_background = '#54555e',
+    line_highlight = '#171717',
   },
   light = {
     bg = '#eff0eb',
@@ -40,13 +49,38 @@ local COLORS = {
     yellow = '#CF9C00',
     green = '#2DAE58',
     blue = '#09A1ED',
+    blue2 = '#004e75',
     cyan = '#13BBB7',
     purple = '#F767BB',
     orange = '#F76D47',
     brown = '#C17E70',
     pink = '#FF5370',
+    invisibles = '#E7EAEC',
+    caret = '#272727',
+    selection = '#c2efd1',
+    guides = '#B0BEC5',
+    line_numbers = '#686968',
+    lsp_background = '#e2e3e9',
+    line_highlight = '#ECF0F1',
+    codeDelimiter = '#78787e',
+  },
+  shared = {
+    gray = '#585853',
+    gray1 = '#979791',
+    fg3 = '#e2e4e5',
+    disabled = '#464B5D',
+    line_numbers = '#256576',
+    selection = '#464B5D',
+    white = '#eff0eb',
+    black = '#000000',
+    yellowfaded = '#ebcb8b',
+    comments = '#78787e',
   }
 }
+
+function Zion1()
+
+end
 
 local get_current_mode = function()
   if vim.g.background == 'dark' or vim.g.background == 'light' then
@@ -80,24 +114,25 @@ function M.load()
   vim.cmd('hi Normal guibg=' .. get_color('bg'))
   Color.new('fg1', get_color('fg'))
   Color.new('fg2', get_color('fg'))
-  Color.new('fg3', '#e2e4e5')
-  Color.new('disabled', '#464B5D')
-  Color.new('line_numbers', '#256576')
-  Color.new('selection', '#464B5D')
+  Color.new('fg3', get_color('fg3', 'shared'))
+  Color.new('disabled', get_color('disabled', 'shared'))
+  Color.new('line_numbers', get_color('line_numbers', 'shared'))
+  Color.new('selection', get_color('selection', 'shared'))
 
-  Color.new('white', '#eff0eb')
-  Color.new('gray', '#585853')
-  Color.new('black', '#000000')
+  Color.new('white', get_color('white', 'shared'))
+  Color.new('gray', get_color('gray', 'shared'))
+  Color.new('gray1', get_color('gray1', 'shared'))
+  Color.new('black', get_color('black', 'shared'))
   Color.new('red', get_color('red'))
   Color.new('green', get_color('green'))
   Color.new('yellow', get_color('yellow'))
-  Color.new('yellowfaded', '#ebcb8b')
+  Color.new('yellowfaded', get_color('yellowfaded', 'shared'))
   Color.new('blue', get_color('blue'))
   Color.new('cyan', get_color('cyan'))
   Color.new('purple', get_color('purple'))
   Color.new('orange', get_color('orange'))
   Color.new('brown', get_color('brown'))
-  Color.new('comments', '#78787e')
+  Color.new('comments', get_color('comments', 'shared'))
   Color.new('error', get_color('red'))
   Color.new('pink', get_color('pink'))
   Color.new('incsearch', get_color('yellow'))
@@ -108,7 +143,7 @@ function M.load()
   Color.new('Boolean', get_color('orange'))
   Color.new('Float', get_color('orange'))
   Color.new('Identifier', get_color('red'))
-  Color.new('Function', get_color('blue'))
+  Color.new('Function', get_color('orange'))
   Color.new('Statement', get_color('red'))
   Color.new('Conditional', get_color('red'))
   Color.new('Repeat', get_color('yellow'))
@@ -140,13 +175,14 @@ function M.load()
     -- Dark theme specific styling
     Color.new('bg', get_color('bg', 'dark'))
     Color.new('fg1', get_color('fg'))
-    Color.new('invisibles', '#65737E')
-    Color.new('comments', '#78787e')
-    Color.new('guides', '#424242')
-    Color.new('line_numbers', '#256576')
+    Color.new('invisibles', get_color('invisibles'))
+    Color.new('comments', get_color('comments', 'shared'))
+    Color.new('caret', get_color('caret'))
+    Color.new('guides', get_color('guides'))
+    Color.new('line_numbers', get_color('blue2'))
     -- Color.new('lsp_background', '#256576')
-    Color.new('lsp_background', '#54555e')
-    Color.new('line_highlight', '#171717')
+    Color.new('lsp_background', get_color('lsp_background'))
+    Color.new('line_highlight', get_color('line_highlight'))
     Color.new('accent', get_color('blue'))
     Color.new('htmlBold', get_color('yellow'))
     Color.new('url', get_color('red'))
@@ -167,15 +203,15 @@ function M.load()
     -- Light theme specific styling
     Color.new('bg', get_color('bg', 'light'))
     Color.new('fg1', get_color('fg', 'light'))
-    Color.new('invisibles', '#E7EAEC')
+    Color.new('invisibles', get_color('invisibles'))
     Color.new('comments', get_color('gray'))
-    Color.new('caret', '#272727')
-    Color.new('selection', '#c2efd1')
-    Color.new('guides', '#B0BEC5')
-    Color.new('line_numbers', '#686968')
+    Color.new('caret', get_color('caret'))
+    Color.new('selection', get_color('selection'))
+    Color.new('guides', get_color('guides'))
+    Color.new('line_numbers', get_color('line_numbers', 'shared'))
     -- Color.new('lsp_background', '#b5e5fc')
-    Color.new('lsp_background', '#e2e3e9')
-    Color.new('line_highlight', '#ECF0F1')
+    Color.new('lsp_background', get_color('lsp_background', 'shared'))
+    Color.new('line_highlight', get_color('line_highlight', 'shared'))
     Color.new('accent', get_color('cyan'))
     Color.new('incsearch', get_color('purple'))
     Color.new('search', get_color('purple'))
@@ -183,7 +219,7 @@ function M.load()
     Color.new('url', get_color('yellow'))
     Color.new('link', get_color('blue'))
     Color.new('heading', get_color('green'))
-    Color.new('codeDelimiter', '#78787e')
+    Color.new('codeDelimiter', get_color('codeDelimiter', 'shared'))
     Color.new('Function', get_color('blue'))
     -- Color.new('Type', get_color('yellow', 'light'))
 
@@ -892,6 +928,36 @@ function M.load()
   -- Group.new('LspDiagnosticsUnderlineHint', c.blue, c.none)
 
   -- Nvim Treesitter Groups (descriptions and ordering from `:h nvim-treesitter-highlights`)
+  Group.new('TSBoolean', c.yellow, nil)
+  Group.new('TSComment', c.gray, nil)
+  Group.new('TSConditional', c.red, nil)
+  Group.new('TSConstant', c.orange, nil)
+  Group.new('TSConstBuiltin', c.orange, nil)
+  Group.new('TSConstructor', c.orange, nil)
+  Group.new('TSException', c.orange, nil)
+  Group.new('TSField', c.orange, nil)
+  Group.new('TSFunction', c.red, nil)
+  Group.new('TSFuncBuiltin', c.orange, nil)
+  Group.new('TSKeyword', c.red, nil)
+  Group.new('TSKeywordFunction', c.red, nil)
+  Group.new('TSKeywordOperator', c.red, nil)
+  Group.new('TSKeywordReturn', c.red, nil)
+  Group.new('TSMethod', c.red, nil)
+  -- Group.new('TSNone', c.none, no)
+  Group.new('TSOperator', c.green, nil)
+  Group.new('TSParameter', c.gray, nil)
+  Group.new('TSRepeat', c.red, nil)
+  Group.new('TSString', c.gray1, nil)
+  Group.new('TSStringEscape', c.yellow, nil)
+  Group.new('TSTag', c.yellow, nil)
+  Group.new('TSTagAttribute', c.yellow, nil)
+  Group.new('TSTagDelimiter', c.gray, nil)
+  Group.new('TSTodo', c.yellow, nil)
+  Group.new('TSType', c.red, nil)
+  Group.new('TSTypeBuiltin', c.yellow, nil)
+  Group.new('TSQualifier', c.red, nil)
+  Group.new('TSVariable', c.orange, nil)
+  Group.new('TSVariableBuiltin', c.orange, nil)
   -- Treesitter rainbow parentheses (https://github.com/p00f/nvim-ts-rainbow)
   Group.new('rainbowcol1', c.blue, nil)
   Group.new('rainbowcol2', c.orange, nil)
@@ -974,6 +1040,18 @@ function M.load()
 
   -- Load icons for kyazdani42/nvim-web-devicons
   M.icon_load()
+
+  if packer_plugins['feline.nvim'] and packer_plugins['feline.nvim'].loaded then
+    local theme = {
+      red = get_color('red'),
+      green = get_color('green'),
+      blue = get_color('blue'),
+      fg = get_color('linefg'),
+      bg = get_color('linebg')
+    }
+    require('feline').use_theme(theme)
+  end
+
 end
 
 function M.icon_load()
