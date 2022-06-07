@@ -26,22 +26,6 @@ use 'hiszd/clrtheme.nvim'
 require('clrtheme')
 ```
 
-
-## Support for web-devicons
-clrtheme has built in support for web icons provided in [kyazdani42/nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons), commonly used with [nvim-tree](https://github.com/kyazdani42/nvim-tree.lua)
-
-To enable clrtheme for icons:
-
-```vim
-let g:clrtheme_icons = v:true
-```
-
-OR 
-
-```lua
-vim.g.clrtheme_icons = true
-```
-
 ## Switching between theme versions
 
 ```lua
