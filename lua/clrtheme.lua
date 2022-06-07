@@ -27,7 +27,7 @@ local COLORS = {
     linefg = '#eff0eb',
     linebg = '#585853',
     red = '#ff5c57',
-    yellow = '#f3f99d',
+    yellow = '#f5e000',
     green = '#68A247',
     blue = '#57c7ff',
     blue2 = '#004e75',
@@ -143,7 +143,7 @@ function M.load()
   Color.new('Label', get_color('yellow'))
   Color.new('Operator', get_color('yellow'))
   Color.new('Number', get_color('green'))
-  Color.new('Keyword', get_color('purple'))
+  Color.new('Keyword', get_color('yellow'))
   Color.new('Exception', get_color('red'))
   Color.new('PreProc', get_color('yellow'))
   Color.new('Include', get_color('blue'))
