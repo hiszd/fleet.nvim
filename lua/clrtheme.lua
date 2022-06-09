@@ -24,6 +24,7 @@ local COLORS = {
     -- bg = '#09151b',
     bg = '#111618',
     fg = '#eff0eb',
+    fg1 = '#eff0eb',
     linefg = '#eff0eb',
     linebg = '#585853',
     red = '#ff5c57',
@@ -41,10 +42,17 @@ local COLORS = {
     guides = '#424242',
     lsp_background = '#54555e',
     line_highlight = '#171717',
+    normal = '#57c7ff',
+    visual = '#68A247',
+    insert = '#ff5c57',
+    command = '#f5e000',
   },
   light = {
     bg = '#eff0eb',
     fg = '#282a36',
+    fg1 = '#000000',
+    linefg = '#585853',
+    linebg = '#cacbc8',
     red = '#ff5c57',
     yellow = '#CF9C00',
     green = '#2DAE58',
@@ -57,12 +65,16 @@ local COLORS = {
     pink = '#FF5370',
     invisibles = '#E7EAEC',
     caret = '#272727',
-    selection = '#c2efd1',
+    selection = '#c4d8e2',
     guides = '#B0BEC5',
     line_numbers = '#686968',
     lsp_background = '#e2e3e9',
     line_highlight = '#ECF0F1',
     codeDelimiter = '#78787e',
+    normal = '#09A1ED',
+    visual = '#2DAE58',
+    insert = '#F76D47',
+    command = '#CF9C00',
   },
   shared = {
     gray = '#585853',
@@ -105,13 +117,14 @@ function M.load()
   local current_mode = get_current_mode()
   -- Universal colors
   vim.cmd('hi Normal guibg=' .. get_color('bg'))
-  Color.new('fg1', get_color('fg'))
+  Color.new('fg1', get_color('fg1'))
   Color.new('fg2', get_color('fg'))
   Color.new('fg3', get_color('fg3', 'shared'))
   Color.new('disabled', get_color('disabled', 'shared'))
   Color.new('line_numbers', get_color('line_numbers', 'shared'))
   Color.new('selection', get_color('selection', 'shared'))
 
+  -- Color.new('white', '#eff0eb')
   Color.new('white', get_color('white', 'shared'))
   Color.new('gray', get_color('gray', 'shared'))
   Color.new('gray1', get_color('gray1', 'shared'))
@@ -131,7 +144,7 @@ function M.load()
   Color.new('incsearch', get_color('yellow'))
   Color.new('search', get_color('yellow'))
   Color.new('Constant', get_color('orange'))
-  -- Color.new('String', get_color('green'))
+  Color.new('String', get_color('fg'))
   Color.new('Character', get_color('red'))
   Color.new('Boolean', get_color('orange'))
   Color.new('Float', get_color('orange'))
@@ -197,14 +210,14 @@ function M.load()
     Color.new('bg', get_color('bg', 'light'))
     Color.new('fg1', get_color('fg', 'light'))
     Color.new('invisibles', get_color('invisibles'))
-    Color.new('comments', get_color('gray'))
+    Color.new('comments', get_color('gray1', 'shared'))
     Color.new('caret', get_color('caret'))
     Color.new('selection', get_color('selection'))
     Color.new('guides', get_color('guides'))
     Color.new('line_numbers', get_color('line_numbers', 'shared'))
     -- Color.new('lsp_background', '#b5e5fc')
-    Color.new('lsp_background', get_color('lsp_background', 'shared'))
-    Color.new('line_highlight', get_color('line_highlight', 'shared'))
+    Color.new('lsp_background', get_color('lsp_background'))
+    Color.new('line_highlight', get_color('line_highlight'))
     Color.new('accent', get_color('cyan'))
     Color.new('incsearch', get_color('purple'))
     Color.new('search', get_color('purple'))
@@ -212,7 +225,7 @@ function M.load()
     Color.new('url', get_color('yellow'))
     Color.new('link', get_color('blue'))
     Color.new('heading', get_color('green'))
-    Color.new('codeDelimiter', get_color('codeDelimiter', 'shared'))
+    Color.new('codeDelimiter', get_color('codeDelimiter', 'light'))
     Color.new('Function', get_color('blue'))
     -- Color.new('Type', get_color('yellow', 'light'))
 
@@ -220,7 +233,7 @@ function M.load()
     Color.new('Operator', get_color('fg'))
     Color.new('Number', get_color('green'))
     Color.new('Conditional', get_color('purple'))
-    Color.new('String', get_color('yellow'))
+    Color.new('String', get_color('fg'))
     Color.new('TSVariable', get_color('fg'))
     Color.new('TSField', get_color('fg'))
     Color.new('TSProperty', get_color('fg'))
@@ -238,7 +251,7 @@ function M.load()
   Group.new('Italic', c.none, c.none, no)
   Group.new('WhiteSpace', c.gray, c.none, no)
   Group.new('Constant', c.Constant, c.none, no) -- any constant
-  -- Group.new('String', c.String, c.none, i) -- this is a string
+  Group.new('String', c.String, c.none, no) -- this is a string
   Group.new('Character', c.Character, c.none, no) -- a character constant: 'c', '\n'
   Group.new('Boolean', c.Boolean, c.none, no) -- a boolean constant: TRUE, false
   Group.new('Number', c.Number, c.none, no) -- a boolean constant: TRUE, false
@@ -287,7 +300,7 @@ function M.load()
   Group.new('EndOfBuffer', c.invisibles, c.none, no) -- filler lines (~) after the last line in the buffer
   Group.new('ErrorMsg', c.fg1, c.bg, no) -- error messages on the command line
   Group.new('VertSplit', c.selection, c.none, no) -- the column separating verti-- cally split windows
-  Group.new('Folded', c.green, c.bg, i) -- line used for closed folds
+  Group.new('Folded', c.gray, c.bg, i) -- line used for closed folds
   Group.new('FoldColumn', c.blue, c.none, no) -- 'foldcolumn'
   Group.new('SignColumn', c.fg1, c.none, no) -- column where signs are displayed
   Group.new('IncSearch', c.selection, c.incsearch, r + b) -- 'incsearch' highlighting; also used for the text replaced with ':s///c'
@@ -298,7 +311,9 @@ function M.load()
   Group.new('MoreMsg', g.ModeMsg, g.ModeMsg, g.ModeMsg) -- more-prompt
   Group.new('NonText', c.fg1, c.none, no) -- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., '>' displayed when a double-wide character doesn't fit at the end of the line).
   Group.new('Normal', c.fg1, c.bg, no) -- normal text
-  Group.new('Pmenu', c.fg1, c.selection, no) -- Popup menu: normal item.
+  Group.new('NormalFloat', c.fg1, c.bg, no) -- normal text
+  Group.new('Menu', c.fg1, c.bg, no) -- Popup menu: normal item.
+  Group.new('Pmenu', c.fg1, c.bg, no) -- Popup menu: normal item.
   Group.new('PmenuSel', c.accent, c.disabled, no) -- Popup menu: selected item.
   Group.new('PmenuSbar', c.fg1, c.bg, no) -- Popup menu: scrollbar.
   Group.new('PmenuThumb', c.fg1, c.accent, no) -- Popup menu: Thumb of the scrollbar.
@@ -747,6 +762,23 @@ function M.load()
   -- hi link cypherVariable             Identifier
 
   -- Plugin highlight
+
+  -- CMP
+  Group.new('CmpItemMenu', c.fg, c.bg, no)
+  Group.new('CmpItemAbbr', c.fg, c.bg, no)
+  Group.new('CmpItemKind', c.fg, c.bg, no)
+  Group.new('CmpItemAbbrDeprecated', c.gray, c.bg, no)
+  Group.new('CmpItemAbbrMatch', c.blue, c.bg, no)
+  Group.new('CmpItemAbbrMatchFuzzy', c.blue, c.bg, no)
+  Group.new('CmpItemKindVariable', c.cyan, c.bg, no)
+  Group.new('CmpItemKindInterface', c.cyan, c.bg, no)
+  Group.new('CmpItemKindText', c.cyan, c.bg, no)
+  Group.new('CmpItemKindFunction', c.red, c.bg, no)
+  Group.new('CmpItemKindMethod', c.red, c.bg, no)
+  Group.new('CmpItemKindKeyword', c.fg, c.bg, no)
+  Group.new('CmpItemKindProperty', c.fg, c.bg, no)
+  Group.new('CmpItemKindUnit', c.fg, c.bg, no)
+
   -- Telescope
   local telescope_selection = current_mode == 'dark' and c.purple or c.yellow
   Group.new('TelescopeSelection', telescope_selection, c.none, b) -- selected item
@@ -1047,7 +1079,11 @@ function M.load_feline()
     green = get_color('green'),
     blue = get_color('blue'),
     fg = get_color('linefg'),
-    bg = get_color('linebg')
+    bg = get_color('linebg'),
+    n = get_color('normal'),
+    v = get_color('visual'),
+    i = get_color('insert'),
+    c = get_color('command'),
   }
   require('feline').use_theme(theme)
 end
@@ -1068,6 +1104,7 @@ function M.reload()
   package.loaded.clrtheme = nil
   package.loaded.colorbuddy = nil
   require('colorbuddy').colorscheme('clrtheme')
+  require('clrtheme').load_feline()
   vim.cmd('hi Normal guibg=' .. get_color('bg'))
   -- vim.cmd(tostring(table.concat({ 'hi Normal guibg=', c.bg })))
 end
