@@ -87,6 +87,7 @@ local COLORS = {
     black = '#000000',
     yellowfaded = '#ebcb8b',
     comments = '#78787e',
+    cursorline = '#242A2C',
   }
 }
 
@@ -159,6 +160,7 @@ function M.load()
   Color.new('Keyword', get_color('blue'))
   Color.new('Exception', get_color('red'))
   Color.new('PreProc', get_color('white', 'shared'))
+  Color.new('cursorline', get_color('cursorline', 'shared'))
   Color.new('Include', get_color('blue'))
   Color.new('Define', get_color('purple'))
   Color.new('Macro', get_color('red'))
@@ -340,7 +342,7 @@ function M.load()
   Group.new('WarningMsg', c.red, c.none, no) --  warning messages
   Group.new('WildMenu', c.red, c.selection, b) --  current match in 'wildmenu' completion
   Group.new('CursorColumn', c.none, c.selection, no) -- Current cursor column highlight
-  Group.new('CursorLine', c.none, c.selection, no) -- Current cursor line highlight
+  Group.new('CursorLine', c.none, c.cursorline, no) -- Current cursor line highlight
   Group.new('ToolbarLine', c.fg1, c.disabled, no)
   Group.new('ToolbarButton', c.fg1, c.bg, b)
   Group.new('NormalMode', c.accent, c.none, r)
@@ -1078,6 +1080,7 @@ function M.load_feline()
     red = get_color('red'),
     green = get_color('green'),
     blue = get_color('blue'),
+    gray = get_color('bg'),
     fg = get_color('linefg'),
     bg = get_color('linebg'),
     n = get_color('normal'),
