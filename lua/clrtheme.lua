@@ -91,6 +91,7 @@ local COLORS = {
   }
 }
 
+
 local get_current_mode = function()
   if vim.g.background == 'dark' or vim.g.background == 'light' then
     return vim.g.background
@@ -113,6 +114,8 @@ local get_color = function(color_name, mode)
 end
 
 local M = {}
+M.get_color = get_color
+M.COLORS = COLORS
 function M.load()
   vim.g.colors_name = 'clrtheme'
   local current_mode = get_current_mode()
@@ -241,7 +244,6 @@ function M.load()
     Color.new('TSProperty', get_color('fg'))
     Color.new('TSParameter', get_color('fg'))
     Color.new('TSKeywordOperator', get_color('purple'))
-
   end
   -- Choose italic comments
   if vim.g.clrtheme_italics == 1 then
@@ -1091,6 +1093,46 @@ function M.load_feline()
   require('feline').use_theme(theme)
 end
 
+function M.lualine_theme()
+  return {
+    normal = {
+      a = { bg = get_color("green"), fg = get_color("fg"), gui = 'bold' },
+      b = { bg = get_color("linebg"), fg = get_color("fg") },
+      c = { bg = get_color("linebg"), fg = get_color("fg") },
+      z = { bg = get_color("linebg"), fg = get_color("fg") }
+    },
+    insert = {
+      a = { bg = get_color("linebg"), fg = get_color("fg"), gui = 'bold' },
+      b = { bg = get_color("linebg"), fg = get_color("fg") },
+      c = { bg = get_color("linebg"), fg = get_color("fg") }
+    },
+    visual = {
+      a = { bg = get_color("linebg"), fg = get_color("fg"), gui = 'bold' },
+      b = { bg = get_color("linebg"), fg = get_color("fg") },
+      c = { bg = get_color("linebg"), fg = get_color("fg") }
+    },
+    replace = {
+      a = { bg = get_color("linebg"), fg = get_color("fg"), gui = 'bold' },
+      b = { bg = get_color("linebg"), fg = get_color("fg") },
+      c = { bg = get_color("linebg"), fg = get_color("fg") }
+    },
+    command = {
+      a = { bg = get_color("linebg"), fg = get_color("fg"), gui = 'bold' },
+      b = { bg = get_color("linebg"), fg = get_color("fg") },
+      c = { bg = get_color("linebg"), fg = get_color("fg") }
+    },
+    inactive = {
+      a = { bg = get_color("linebg"), fg = get_color("fg"), gui = 'bold' },
+      b = { bg = get_color("linebg"), fg = get_color("fg") },
+      c = { bg = get_color("linebg"), fg = get_color("fg") }
+    }
+  }
+end
+
+function M.load_lualine()
+  require('lualine').setup({ options = { theme = M.lualine_theme() } })
+end
+
 function M.icon_load()
   if vim.g.colors_name == 'clrtheme' and vim.g.clrtheme_icons then
     require 'clrtheme.icons'.setup(Group)
@@ -1107,7 +1149,7 @@ function M.reload()
   package.loaded.clrtheme = nil
   package.loaded.colorbuddy = nil
   require('colorbuddy').colorscheme('clrtheme')
-  require('clrtheme').load_feline()
+  require('clrtheme').load_lualine()
   vim.cmd('hi Normal guibg=' .. get_color('bg'))
   -- vim.cmd(tostring(table.concat({ 'hi Normal guibg=', c.bg })))
 end
