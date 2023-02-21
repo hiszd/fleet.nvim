@@ -115,6 +115,7 @@ end
 
 local M = {}
 M.get_color = get_color
+M.get_current_mode = get_current_mode
 M.COLORS = COLORS
 function M.load()
   vim.g.colors_name = 'clrtheme'
@@ -147,6 +148,8 @@ function M.load()
   Color.new('pink', get_color('pink'))
   Color.new('incsearch', get_color('yellow'))
   Color.new('search', get_color('yellow'))
+  Color.new('linebg', get_color('linebg'))
+  Color.new('linefg', get_color('linefg'))
   Color.new('Constant', get_color('orange'))
   Color.new('String', get_color('fg'))
   Color.new('Character', get_color('red'))
@@ -290,6 +293,13 @@ function M.load()
   Group.new('Todo', c.Todo, c.none, b + i) -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
   -- Highlight groups
+
+  -- Barbar highlighting
+  Group.new('BufferInactive', c.gray1, c.linebg)
+  Group.new('BufferInactiveIndex', c.Special, c.linebg)
+  Group.new('BufferInactiveMod', c.gray1, c.linebg)
+  Group.new('BufferInactiveSign', c.gray1, c.linebg)
+  Group.new('BufferCurrent', c.fg, c.bg)
 
   Group.new('ColorColumn', c.fg3, c.bg, no) --  used for the columns set with 'colorcolumn'
   Group.new('Conceal', c.blue, c.bg, no) -- placeholder characters substituted for concealed text (see 'conceallevel')
