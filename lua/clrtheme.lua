@@ -299,7 +299,13 @@ function M.load()
   Group.new('BufferInactiveIndex', c.Special, c.linebg)
   Group.new('BufferInactiveMod', c.gray1, c.linebg)
   Group.new('BufferInactiveSign', c.gray1, c.linebg)
+  Group.new('BufferInactiveTarget', c.red, c.linebg)
   Group.new('BufferCurrent', c.fg, c.bg)
+  Group.new('BufferVisible', c.fg, c.bg)
+  Group.new('BufferVisibleIndex', c.Special, c.bg)
+  Group.new('BufferVisibleMod', c.fg, c.bg)
+  Group.new('BufferVisibleSign', c.fg, c.bg)
+  Group.new('BufferVisibleTarget', c.red, c.bg)
 
   Group.new('ColorColumn', c.fg3, c.bg, no) --  used for the columns set with 'colorcolumn'
   Group.new('Conceal', c.blue, c.bg, no) -- placeholder characters substituted for concealed text (see 'conceallevel')
