@@ -361,8 +361,8 @@ function M.load()
   Group.new('StatusLineTerm', c.bg, c.green, g.StatusLine)                      -- status line of current :terminal window
   Group.new('StatusLineTermNC', g.StatusLineNC, g.StatusLineNC, g.StatusLineNC) -- status line of non-current :terminal window
   Group.new('TabLineFill', c.fg1, c.bg, no)
-  Group.new('TabLineSel', c.green, c.accent, no)
-  Group.new('TabLine', g.TabLineFill, g.TabLineFill, g.TabLineFill)
+  Group.new('TabLineSel', c.fg1, c.bg1, no)
+  Group.new('TabLine', c.fg1, c.bg, no)
   Group.new('Title', c.blue, c.none, b)                -- titles for output from ':set all', ':autocmd' etc.
   Group.new('Visual', c.none, c.selection, no)         -- Visual mode selection
   Group.new('VisualNOS', g.Visual, g.Visual, g.Visual) -- Visual mode selection when vim is 'Not Owning the Selection'. Only X11 Gui's gui-x11 and xterm-clipboard supports this.
