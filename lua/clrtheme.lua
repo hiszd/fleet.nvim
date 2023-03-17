@@ -22,8 +22,8 @@ local COLORS = {
     -- bg = '#001b24',
     -- bg = '#00253d',
     -- bg = '#09151b',
-    bg = '#0A0F15',
-    bg1 = '#001525',
+    bg = '#1E1E1E',
+    bg1 = '#222729',
     fg = '#eff0eb',
     fg1 = '#eff0eb',
     linefg = '#eff0eb',
@@ -86,10 +86,11 @@ local COLORS = {
     line_numbers = '#256576',
     selection = '#464B5D',
     white = '#eff0eb',
-    black = '#000000',
+    black = '#101010',
     yellowfaded = '#ebcb8b',
     comments = '#78787e',
     cursorline = '#242A2C',
+    dark_gray = '#171717',
   }
 }
 
@@ -131,7 +132,6 @@ function M.load()
   Color.new('line_numbers', get_color('line_numbers', 'shared'))
   Color.new('selection', get_color('selection', 'shared'))
 
-  -- Color.new('white', '#eff0eb')
   Color.new('white', get_color('white', 'shared'))
   Color.new('gray', get_color('gray', 'shared'))
   Color.new('gray1', get_color('gray1', 'shared'))
@@ -254,47 +254,47 @@ function M.load()
   end
   -- Choose italic comments
   if vim.g.clrtheme_italics == 1 then
-    Group.new('Comment', c.comments, c.none, i) -- italic comments
+    Group.new('Comment', c.comments, c.none, i)  -- italic comments
   else
     Group.new('Comment', c.comments, c.none, no) -- normal comments
   end
 
   Group.new('Italic', c.none, c.none, no)
   Group.new('WhiteSpace', c.gray, c.none, no)
-  Group.new('Constant', c.Constant, c.none, no) -- any constant
-  Group.new('String', c.String, c.none, no) -- this is a string
-  Group.new('Character', c.Character, c.none, no) -- a character constant: 'c', '\n'
-  Group.new('Boolean', c.Boolean, c.none, no) -- a boolean constant: TRUE, false
-  Group.new('Number', c.Number, c.none, no) -- a boolean constant: TRUE, false
-  Group.new('Float', c.Float, c.none, no) -- a floating point constant: 2.3e10
-  Group.new('Identifier', c.Identifier, c.none, no) -- any variable name
-  Group.new('Function', c.Function, c.none, no) -- function name (also: methods for classes)
-  Group.new('Statement', c.Statement, c.none, no) -- any statement
-  Group.new('Conditional', c.Conditional, c.none, no) -- if, then, else, endif, switch, etc.
-  Group.new('Repeat', c.Repeat, c.none, no) -- for, do, while, etc.
-  Group.new('Label', c.Label, c.none, no) -- case, default, etc.
-  Group.new('Operator', c.Operator, c.none, no) -- sizeof', '+', '*', etc.
-  Group.new('Keyword', c.Keyword, c.none, no) -- any other keyword
-  Group.new('Exception', c.Exception, c.none, no) -- try, catch, throw
-  Group.new('PreProc', c.PreProc, c.none, no) -- generic Preprocessor
-  Group.new('Include', c.Include, c.none, no) -- preprocessor #include
-  Group.new('Define', c.Define, c.none, no) -- preprocessor #define
-  Group.new('Macro', c.Macro, c.none, no) -- same as Define
-  Group.new('PreCondit', c.PreCondit, c.none, no) -- preprocessor #if, #else, #endif, etc.
-  Group.new('Type', c.Type, c.none, no) -- int, long, char, etc.
-  Group.new('StorageClass', c.StorageClass, c.none, no) -- static, register, volatile, etc.
-  Group.new('Structure', c.Structure, c.none, no) -- struct, union, enum, etc.
-  Group.new('Typedef', c.Typedef, c.none, no) -- A typedef
-  Group.new('Special', c.Special, c.none, no) -- any special symbol
-  Group.new('SpecialChar', c.SpecialChar, c.none, no) -- special character in a constant
-  Group.new('Tag', c.Tag, c.none, no) -- you can use CTRL-] on this
-  Group.new('Delimiter', c.Delimiter, c.none, no) -- character that needs attention
+  Group.new('Constant', c.Constant, c.none, no)             -- any constant
+  Group.new('String', c.String, c.none, no)                 -- this is a string
+  Group.new('Character', c.Character, c.none, no)           -- a character constant: 'c', '\n'
+  Group.new('Boolean', c.Boolean, c.none, no)               -- a boolean constant: TRUE, false
+  Group.new('Number', c.Number, c.none, no)                 -- a boolean constant: TRUE, false
+  Group.new('Float', c.Float, c.none, no)                   -- a floating point constant: 2.3e10
+  Group.new('Identifier', c.Identifier, c.none, no)         -- any variable name
+  Group.new('Function', c.Function, c.none, no)             -- function name (also: methods for classes)
+  Group.new('Statement', c.Statement, c.none, no)           -- any statement
+  Group.new('Conditional', c.Conditional, c.none, no)       -- if, then, else, endif, switch, etc.
+  Group.new('Repeat', c.Repeat, c.none, no)                 -- for, do, while, etc.
+  Group.new('Label', c.Label, c.none, no)                   -- case, default, etc.
+  Group.new('Operator', c.Operator, c.none, no)             -- sizeof', '+', '*', etc.
+  Group.new('Keyword', c.Keyword, c.none, no)               -- any other keyword
+  Group.new('Exception', c.Exception, c.none, no)           -- try, catch, throw
+  Group.new('PreProc', c.PreProc, c.none, no)               -- generic Preprocessor
+  Group.new('Include', c.Include, c.none, no)               -- preprocessor #include
+  Group.new('Define', c.Define, c.none, no)                 -- preprocessor #define
+  Group.new('Macro', c.Macro, c.none, no)                   -- same as Define
+  Group.new('PreCondit', c.PreCondit, c.none, no)           -- preprocessor #if, #else, #endif, etc.
+  Group.new('Type', c.Type, c.none, no)                     -- int, long, char, etc.
+  Group.new('StorageClass', c.StorageClass, c.none, no)     -- static, register, volatile, etc.
+  Group.new('Structure', c.Structure, c.none, no)           -- struct, union, enum, etc.
+  Group.new('Typedef', c.Typedef, c.none, no)               -- A typedef
+  Group.new('Special', c.Special, c.none, no)               -- any special symbol
+  Group.new('SpecialChar', c.SpecialChar, c.none, no)       -- special character in a constant
+  Group.new('Tag', c.Tag, c.none, no)                       -- you can use CTRL-] on this
+  Group.new('Delimiter', c.Delimiter, c.none, no)           -- character that needs attention
   Group.new('SpecialComment', c.SpecialComment, c.none, no) -- special things inside a comment
-  Group.new('Debug', c.Debug, c.none, no) -- debugging statements
-  Group.new('Underlined', c.Underlined, c.none, ul) -- text that stands out, HTML links
-  Group.new('Ignore', c.disabled, c.none, no) -- left blank, hidden
-  Group.new('Error', c.error, c.none) -- any erroneous construct, also -- see: https://github.com/neovim/neovim/issues/13746
-  Group.new('Todo', c.Todo, c.none, b + i) -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+  Group.new('Debug', c.Debug, c.none, no)                   -- debugging statements
+  Group.new('Underlined', c.Underlined, c.none, ul)         -- text that stands out, HTML links
+  Group.new('Ignore', c.disabled, c.none, no)               -- left blank, hidden
+  Group.new('Error', c.error, c.none)                       -- any erroneous construct, also -- see: https://github.com/neovim/neovim/issues/13746
+  Group.new('Todo', c.Todo, c.none, b + i)                  -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
   -- Highlight groups
 
@@ -311,65 +311,65 @@ function M.load()
   Group.new('BufferVisibleSign', c.fg, c.bg)
   Group.new('BufferVisibleTarget', c.red, c.bg)
 
-  Group.new('ColorColumn', c.fg3, c.bg, no) --  used for the columns set with 'colorcolumn'
-  Group.new('Conceal', c.blue, c.bg, no) -- placeholder characters substituted for concealed text (see 'conceallevel')
-  Group.new('Cursor', c.bg, c.fg1, b + r) -- the character under the cursor
-  Group.new('CursorIM', c.fg1, c.none, r) -- like Cursor, but used when in IME mode
+  Group.new('ColorColumn', c.fg3, c.bg, no)               --  used for the columns set with 'colorcolumn'
+  Group.new('Conceal', c.blue, c.bg, no)                  -- placeholder characters substituted for concealed text (see 'conceallevel')
+  Group.new('Cursor', c.bg, c.fg1, b + r)                 -- the character under the cursor
+  Group.new('CursorIM', c.fg1, c.none, r)                 -- like Cursor, but used when in IME mode
   -- Group.new('InvisibleCursor', c.red, c.red, b) -- like Cursor, but used when in IME mode
-  Group.new('Directory', c.blue, c.none, b) -- directory names (and other special names in listings)
-  Group.new('DiffAdd', c.green, c.none, no) -- diff mode: Added line
-  Group.new('DiffChange', c.orange, c.none, no) --  diff mode: Changed line
-  Group.new('DiffDelete', c.red, c.none, no) -- diff mode: Deleted line
-  Group.new('DiffText', c.blue, c.none, no) -- diff mode: Changed text within a changed line
-  Group.new('EndOfBuffer', c.invisibles, c.none, no) -- filler lines (~) after the last line in the buffer
-  Group.new('ErrorMsg', c.fg1, c.bg, no) -- error messages on the command line
-  Group.new('VertSplit', c.selection, c.none, no) -- the column separating verti-- cally split windows
-  Group.new('Folded', c.gray, c.bg, i) -- line used for closed folds
-  Group.new('FoldColumn', c.blue, c.none, no) -- 'foldcolumn'
-  Group.new('SignColumn', c.fg1, c.none, no) -- column where signs are displayed
+  Group.new('Directory', c.blue, c.none, b)               -- directory names (and other special names in listings)
+  Group.new('DiffAdd', c.green, c.none, no)               -- diff mode: Added line
+  Group.new('DiffChange', c.orange, c.none, no)           --  diff mode: Changed line
+  Group.new('DiffDelete', c.red, c.none, no)              -- diff mode: Deleted line
+  Group.new('DiffText', c.blue, c.none, no)               -- diff mode: Changed text within a changed line
+  Group.new('EndOfBuffer', c.invisibles, c.none, no)      -- filler lines (~) after the last line in the buffer
+  Group.new('ErrorMsg', c.fg1, c.bg, no)                  -- error messages on the command line
+  Group.new('VertSplit', c.selection, c.none, no)         -- the column separating verti-- cally split windows
+  Group.new('Folded', c.gray, c.bg, i)                    -- line used for closed folds
+  Group.new('FoldColumn', c.blue, c.none, no)             -- 'foldcolumn'
+  Group.new('SignColumn', c.fg1, c.none, no)              -- column where signs are displayed
   Group.new('IncSearch', c.selection, c.incsearch, r + b) -- 'incsearch' highlighting; also used for the text replaced with ':s///c'
-  Group.new('LineNr', c.line_numbers, c.none, no) -- Line number for ':number' and ':#' commands, and when 'number' or 'relativenumber' option is set.
-  Group.new('CursorLineNr', c.accent, c.none, no) -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-  Group.new('MatchParen', c.cyan, c.none, b) -- The character under the cursor or just before it, if it is a paired bracket, and its match.
-  Group.new('ModeMsg', c.green, c.none, no) -- 'showmode' message (e.g., '-- INSERT --')
-  Group.new('MoreMsg', g.ModeMsg, g.ModeMsg, g.ModeMsg) -- more-prompt
-  Group.new('NonText', c.fg1, c.none, no) -- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., '>' displayed when a double-wide character doesn't fit at the end of the line).
-  Group.new('Normal', c.fg1, c.bg, no) -- normal text
-  Group.new('NormalFloat', c.fg1, c.bg, no) -- normal text
+  Group.new('LineNr', c.line_numbers, c.none, no)         -- Line number for ':number' and ':#' commands, and when 'number' or 'relativenumber' option is set.
+  Group.new('CursorLineNr', c.accent, c.none, no)         -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+  Group.new('MatchParen', c.cyan, c.none, b)              -- The character under the cursor or just before it, if it is a paired bracket, and its match.
+  Group.new('ModeMsg', c.green, c.none, no)               -- 'showmode' message (e.g., '-- INSERT --')
+  Group.new('MoreMsg', g.ModeMsg, g.ModeMsg, g.ModeMsg)   -- more-prompt
+  Group.new('NonText', c.fg1, c.none, no)                 -- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., '>' displayed when a double-wide character doesn't fit at the end of the line).
+  Group.new('Normal', c.fg1, c.bg, no)                    -- normal text
+  Group.new('NormalFloat', c.fg1, c.bg, no)               -- normal text
 
 
   -- Popup Menu colors(e.g. nvim-cmp)
-  Group.new('Menu', c.fg1, c.bg1, no) -- Popup menu: normal item.
-  Group.new('Pmenu', c.fg1, c.bg1, no) -- Popup menu: normal item.
+  Group.new('Menu', c.fg1, c.bg1, no)          -- Popup menu: normal item.
+  Group.new('Pmenu', c.fg1, c.bg1, no)         -- Popup menu: normal item.
   Group.new('PmenuSel', c.selection, c.bg, no) -- Popup menu: selected item.
-  Group.new('PmenuSbar', c.fg1, c.bg1, no) -- Popup menu: scrollbar.
+  Group.new('PmenuSbar', c.fg1, c.bg1, no)     -- Popup menu: scrollbar.
   Group.new('PmenuThumb', c.fg1, c.accent, no) -- Popup menu: Thumb of the scrollbar.
 
 
-  Group.new('Question', c.blue, c.none, b) -- hit-enter prompt and yes/no questions
-  Group.new('QuickFixLine', c.fg1, c.bg1, b) -- Current quickfix item in the quickfix window.
+  Group.new('Question', c.blue, c.none, b)                                      -- hit-enter prompt and yes/no questions
+  Group.new('QuickFixLine', c.fg1, c.bg1, b)                                    -- Current quickfix item in the quickfix window.
   Group.new('qfLineNr', g.Type, g.Type, g.Type)
-  Group.new('Search', c.selection, c.search, r + b) -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
-  Group.new('SpecialKey', c.gray, c.none, no) -- Meta and special keys listed with ':map', also for text used to show unprintable characters in the text, 'listchars'. Generally: text that is displayed differently from what it really is.
-  Group.new('SpellBad', c.red, c.none, i + uc) -- Word that is not recognized by the spellchecker. This will be combined with the highlighting used otherwise.
-  Group.new('SpellCap', c.blue, c.none, i + uc) -- Word that should start with a capital. This will be combined with the highlighting used otherwise.
-  Group.new('SpellLocal', c.cyan, c.none, i + uc) -- Word that is recognized by the spellchecker as one that is used in another region. This will be combined with the highlighting used otherwise.
-  Group.new('SpellRare', c.purple, c.none, i + uc) -- Word that is recognized by the spellchecker as one that is hardly ever used. spell This will be combined with the highlighting used otherwise.
-  Group.new('StatusLine', c.fg1, c.bg, no) -- status line of current window
-  Group.new('StatusLineNC', c.comments, c.selection, no) -- status lines of not-current windows Note: if this is equal to 'StatusLine' Vim will use '^^^' in the status line of the current window.
+  Group.new('Search', c.selection, c.search, r + b)                             -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
+  Group.new('SpecialKey', c.gray, c.none, no)                                   -- Meta and special keys listed with ':map', also for text used to show unprintable characters in the text, 'listchars'. Generally: text that is displayed differently from what it really is.
+  Group.new('SpellBad', c.red, c.none, i + uc)                                  -- Word that is not recognized by the spellchecker. This will be combined with the highlighting used otherwise.
+  Group.new('SpellCap', c.blue, c.none, i + uc)                                 -- Word that should start with a capital. This will be combined with the highlighting used otherwise.
+  Group.new('SpellLocal', c.cyan, c.none, i + uc)                               -- Word that is recognized by the spellchecker as one that is used in another region. This will be combined with the highlighting used otherwise.
+  Group.new('SpellRare', c.purple, c.none, i + uc)                              -- Word that is recognized by the spellchecker as one that is hardly ever used. spell This will be combined with the highlighting used otherwise.
+  Group.new('StatusLine', c.fg1, c.bg, no)                                      -- status line of current window
+  Group.new('StatusLineNC', c.comments, c.selection, no)                        -- status lines of not-current windows Note: if this is equal to 'StatusLine' Vim will use '^^^' in the status line of the current window.
   -- Group.new('StatusLineTerm', g.StatusLine, g.StatusLine, g.StatusLine) -- status line of current :terminal window
-  Group.new('StatusLineTerm', c.bg, c.green, g.StatusLine) -- status line of current :terminal window
+  Group.new('StatusLineTerm', c.bg, c.green, g.StatusLine)                      -- status line of current :terminal window
   Group.new('StatusLineTermNC', g.StatusLineNC, g.StatusLineNC, g.StatusLineNC) -- status line of non-current :terminal window
   Group.new('TabLineFill', c.fg1, c.bg, no)
   Group.new('TabLineSel', c.green, c.accent, no)
   Group.new('TabLine', g.TabLineFill, g.TabLineFill, g.TabLineFill)
-  Group.new('Title', c.blue, c.none, b) -- titles for output from ':set all', ':autocmd' etc.
-  Group.new('Visual', c.none, c.selection, no) -- Visual mode selection
+  Group.new('Title', c.blue, c.none, b)                -- titles for output from ':set all', ':autocmd' etc.
+  Group.new('Visual', c.none, c.selection, no)         -- Visual mode selection
   Group.new('VisualNOS', g.Visual, g.Visual, g.Visual) -- Visual mode selection when vim is 'Not Owning the Selection'. Only X11 Gui's gui-x11 and xterm-clipboard supports this.
-  Group.new('WarningMsg', c.red, c.none, no) --  warning messages
-  Group.new('WildMenu', c.red, c.selection, b) --  current match in 'wildmenu' completion
-  Group.new('CursorColumn', c.none, c.selection, no) -- Current cursor column highlight
-  Group.new('CursorLine', c.none, c.cursorline, no) -- Current cursor line highlight
+  Group.new('WarningMsg', c.red, c.none, no)           --  warning messages
+  Group.new('WildMenu', c.red, c.selection, b)         --  current match in 'wildmenu' completion
+  Group.new('CursorColumn', c.none, c.selection, no)   -- Current cursor column highlight
+  Group.new('CursorLine', c.none, c.cursorline, no)    -- Current cursor line highlight
   Group.new('ToolbarLine', c.fg1, c.disabled, no)
   Group.new('ToolbarButton', c.fg1, c.bg, b)
   Group.new('NormalMode', c.accent, c.none, r)
@@ -831,7 +831,7 @@ function M.load()
   -- Telescope
   local telescope_selection = current_mode == 'dark' and c.purple or c.yellow
   Group.new('TelescopeSelection', telescope_selection, c.none, b) -- selected item
-  Group.new('TelescopeSelectionCaret', c.green, c.none) -- selection caret
+  Group.new('TelescopeSelectionCaret', c.green, c.none)           -- selection caret
   -- Group.new('TelescopeMultiSelection', c.brown, c.none) -- multisections
   -- Group.new('TelescopeNormal', g.Normal, c.g.Normal) --  floating windows created by telescope.
   local telescope_matching = current_mode == 'dark' and c.yellow or c.orange
@@ -888,9 +888,9 @@ function M.load()
   Group.new('GitGutterChangeDelete', c.purple, c.none, b)
   -- Git Messenger (rhysd/git-messenger.vim)
   Group.new('gitmessengerPopupNormal', g.CursorLine, g.CursorLine, g.CursorLine) -- Normal color in popup window
-  Group.new('gitmessengerHeader', g.CursorLine, g.CursorLine, g.CursorLine) -- Header such as 'Commit:', 'Author:'
-  Group.new('gitmessengerHash', g.CursorLine, g.CursorLine, g.CursorLine) -- Commit hash at 'Commit:' header
-  Group.new('gitmessengerHistory', g.CursorLine, g.CursorLine, g.CursorLine) -- History number at 'History:' header
+  Group.new('gitmessengerHeader', g.CursorLine, g.CursorLine, g.CursorLine)      -- Header such as 'Commit:', 'Author:'
+  Group.new('gitmessengerHash', g.CursorLine, g.CursorLine, g.CursorLine)        -- Commit hash at 'Commit:' header
+  Group.new('gitmessengerHistory', g.CursorLine, g.CursorLine, g.CursorLine)     -- History number at 'History:' header
   -- NvimTree (kyazdani42/nvim-tree.lua)
   Group.new('NvimTreeFolderName', c.fg1, c.none, no)
   Group.new('NvimTreeFolderIcon', c.accent, c.none, no)
@@ -946,14 +946,14 @@ function M.load()
   Group.new('TermCursorNC', c.fg1, c.bg)
 
   -- LSP Groups ( see `:h lsp-highlight`)
-  Group.new('LspDiagnosticsDefaultError', c.error, c.none) -- Base highlight for errors
-  Group.new('LspDiagnosticsDefaultWarning', c.yellow, c.none) -- Base highlight for warnings
+  Group.new('LspDiagnosticsDefaultError', c.error, c.none)      -- Base highlight for errors
+  Group.new('LspDiagnosticsDefaultWarning', c.yellow, c.none)   -- Base highlight for warnings
   Group.new('LSPDiagnosticsDefaultInformation', c.blue, c.none) -- Base highlight for info
-  Group.new('LspDiagnosticsDefaultHint', c.green, c.none) -- Base highlight for hints
+  Group.new('LspDiagnosticsDefaultHint', c.green, c.none)       -- Base highlight for hints
 
-  Group.new('LspReferenceText', c.none, c.lsp_background) -- used for highlighting 'text' references
-  Group.new('LspReferenceRead', c.none, c.lsp_background) -- used for highlighting 'read' references
-  Group.new('LspReferenceWrite', c.none, c.lsp_background) -- used for highlighting 'write' references
+  Group.new('LspReferenceText', c.none, c.lsp_background)       -- used for highlighting 'text' references
+  Group.new('LspReferenceRead', c.none, c.lsp_background)       -- used for highlighting 'read' references
+  Group.new('LspReferenceWrite', c.none, c.lsp_background)      -- used for highlighting 'write' references
 
   -- LSP Saga
   Group.new('DiagnosticError', c.error, c.none)
@@ -1056,42 +1056,42 @@ function M.load()
   Group.new('SnazzyIndent6', c.cyan, nil)
   Group.new('SnazzyIndent7', c.brown, nil)
 
-  Group.new('TSError', c.error, c.none, b) -- For syntax/parser errors
-  Group.new('TSPunctDelimiter', g.Delimiter, c.none) -- For delimiters ie: `.
-  Group.new('TSPunctBracket', c.fg3, nil) -- For brackets and parens
+  Group.new('TSError', c.error, c.none, b)                    -- For syntax/parser errors
+  Group.new('TSPunctDelimiter', g.Delimiter, c.none)          -- For delimiters ie: `.
+  Group.new('TSPunctBracket', c.fg3, nil)                     -- For brackets and parens
   -- Group.new('TSPunctSpecial'       , c.fg     , nil) -- For special punctutation that does not fall in the catagories before
-  Group.new('TSConstant', g.Constant, c.none) -- For constants
-  Group.new('TSConstBuiltin', g.Constant, c.none) -- For constant that are built in the language: `nil` in Lua
-  Group.new('TSConstMacro', g.Constant, c.none) -- For constants that are defined by macros: `NULL` in C
+  Group.new('TSConstant', g.Constant, c.none)                 -- For constants
+  Group.new('TSConstBuiltin', g.Constant, c.none)             -- For constant that are built in the language: `nil` in Lua
+  Group.new('TSConstMacro', g.Constant, c.none)               -- For constants that are defined by macros: `NULL` in C
   -- Group.new('TSString', g.String, c.none) -- For strings
-  Group.new('TSStringRegex', c.red, nil) -- For regexes
-  Group.new('TSStringEscape', c.red, nil) -- For escape characters within a string
-  Group.new('TSCharacter', g.Character, c.none) -- For characters
-  Group.new('TSNumber', g.Number, c.none) -- For integers
-  Group.new('TSBoolean', g.Boolean, c.none) -- For booleans
-  Group.new('TSFloat', g.Float, c.none) -- For floats
-  Group.new('TSFunction', g.Function, c.none) -- For function (calls and definitions
-  Group.new('TSFuncBuiltin', g.Function, c.none) -- For builtin functions: `table.insert` in Lua
-  Group.new('TSFuncMacro', g.Function, c.none) -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
-  Group.new('TSParameter', c.TSParameter, c.none, s.none) -- For parameters of a function.
+  Group.new('TSStringRegex', c.red, nil)                      -- For regexes
+  Group.new('TSStringEscape', c.red, nil)                     -- For escape characters within a string
+  Group.new('TSCharacter', g.Character, c.none)               -- For characters
+  Group.new('TSNumber', g.Number, c.none)                     -- For integers
+  Group.new('TSBoolean', g.Boolean, c.none)                   -- For booleans
+  Group.new('TSFloat', g.Float, c.none)                       -- For floats
+  Group.new('TSFunction', g.Function, c.none)                 -- For function (calls and definitions
+  Group.new('TSFuncBuiltin', g.Function, c.none)              -- For builtin functions: `table.insert` in Lua
+  Group.new('TSFuncMacro', g.Function, c.none)                -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
+  Group.new('TSParameter', c.TSParameter, c.none, s.none)     -- For parameters of a function.
   -- Group.new('TSParameterReference' , g.TSParameter     , nil) -- For references to parameters of a function.
-  Group.new('TSMethod', g.Function, c.none) -- For method calls and definitions.
-  Group.new('TSField', c.TSField, c.none, s.none) -- For fields.
-  Group.new('TSProperty', c.TSProperty, c.none, s.none) -- Same as `TSField`.
+  Group.new('TSMethod', g.Function, c.none)                   -- For method calls and definitions.
+  Group.new('TSField', c.TSField, c.none, s.none)             -- For fields.
+  Group.new('TSProperty', c.TSProperty, c.none, s.none)       -- Same as `TSField`.
   -- Group.new('TSConstructor'        , c.magenta_alt       , c.none)  -- For constructor calls and definitions: `{}` in Lua, and Java constructors
-  Group.new('TSConditional', g.Conditional, c.none) -- For keywords related to conditionnals
-  Group.new('TSRepeat', g.Repeat, c.none) -- For keywords related to loops
-  Group.new('TSLabel', g.Label, c.none) -- For labels: `label:` in C and `:label:` in Lua
-  Group.new('TSOperator', g.Operator, c.none) -- For any operator: `+`, but also `->` and `*` in C
-  Group.new('TSKeyword', g.Keyword, c.none) -- For keywords that don't fall in previous categories.
+  Group.new('TSConditional', g.Conditional, c.none)           -- For keywords related to conditionnals
+  Group.new('TSRepeat', g.Repeat, c.none)                     -- For keywords related to loops
+  Group.new('TSLabel', g.Label, c.none)                       -- For labels: `label:` in C and `:label:` in Lua
+  Group.new('TSOperator', g.Operator, c.none)                 -- For any operator: `+`, but also `->` and `*` in C
+  Group.new('TSKeyword', g.Keyword, c.none)                   -- For keywords that don't fall in previous categories.
   Group.new('TSKeywordOperator', c.TSKeywordOperator, c.none) -- For keywords that don't fall in previous categories.
 
   -- Group.new('TSKeywordFunction'    , c.magenta_alt       , c.none  , s.none) -- For keywords used to define a fuction.
-  Group.new('TSException', g.Exception, c.none) -- For exception related keywords.
-  Group.new('TSType', g.Type, c.none, s.none) -- For types.
+  Group.new('TSException', g.Exception, c.none)      -- For exception related keywords.
+  Group.new('TSType', g.Type, c.none, s.none)        -- For types.
   Group.new('TSTypeBuiltin', g.Type, c.none, s.none) -- For builtin types (you guessed it, right ?).
-  Group.new('TSStructure', g.Structure, c.none) -- This is left as an exercise for the reader.
-  Group.new('TSInclude', g.Include, c.none) -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
+  Group.new('TSStructure', g.Structure, c.none)      -- This is left as an exercise for the reader.
+  Group.new('TSInclude', g.Include, c.none)          -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
   -- Group.new('TSAnnotation'         , c.blue_nuanced_bg , c.none) -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
   -- Group.new('TSText'             , c.fg              , c.bg           , b) -- For strings considered text in a markup language.
   -- Group.new('TSStrong'             , c.fg              , c.bg           , b) -- For text to be represented with strong.
@@ -1112,11 +1112,6 @@ function M.load()
   Group.new("mailQuoted6", c.yellow, c.none, no)
   Group.new("mailURL", c.blue, c.none, no)
   Group.new("mailEmail", c.blue, c.none, no)
-
-  -- Group overrides for light theme
-  if get_current_mode() == 'light' then
-    -- TODO: incsearch
-  end
 
   -- Load icons for kyazdani42/nvim-web-devicons
   M.icon_load()
@@ -1179,25 +1174,30 @@ function M.load_lualine()
 end
 
 function M.bufferline_highlights()
-  local norm_bg = get_color("bg")
-  local norm_fg = get_color("fg")
-  local comment_fg = get_color("comments", "shared")
+  local norm_bg = get_color('bg')
+  local norm_fg = get_color('fg')
+  local comment_fg = get_color('comments', 'shared')
+  local black = get_color('black', 'shared')
+  local visible = get_color('dark_gray', 'shared')
+
+  -- The backdrop color
+  local backdrop = black
 
   return {
     fill = {
       fg = norm_bg,
-      bg = comment_fg,
+      bg = backdrop,
     },
     background = {
       fg = comment_fg,
-      bg = norm_bg,
+      bg = visible,
     },
     tab = {
       fg = comment_fg,
-      bg = norm_bg,
+      bg = visible,
     },
     tab_selected = {
-      fg = comment_fg,
+      fg = norm_fg,
       bg = norm_bg,
     },
     tab_close = {
@@ -1206,15 +1206,15 @@ function M.bufferline_highlights()
     },
     close_button = {
       fg = norm_fg,
+      bg = visible,
+    },
+    close_button_selected = {
+      fg = norm_fg,
       bg = norm_bg,
     },
     numbers = {
       fg = comment_fg,
-      bg = norm_bg,
-    },
-    numbers_visible = {
-      fg = comment_fg,
-      bg = norm_bg,
+      bg = visible,
     },
     numbers_selected = {
       fg = norm_fg,
@@ -1223,16 +1223,12 @@ function M.bufferline_highlights()
       italic = true,
     },
     separator_selected = {
-      fg = comment_fg,
-      bg = norm_bg,
-    },
-    separator_visible = {
-      fg = comment_fg,
+      fg = backdrop,
       bg = norm_bg,
     },
     separator = {
-      fg = comment_fg,
-      bg = norm_bg,
+      fg = backdrop,
+      bg = visible,
     },
     pick = {
       bg = norm_bg,
