@@ -197,6 +197,7 @@ function M.load()
     Color.new('caret', get_color('caret'))
     Color.new('guides', get_color('guides'))
     Color.new('line_numbers', get_color('blue2'))
+    Color.new('blue2', get_color('blue2', 'dark'))
     -- Color.new('lsp_background', '#256576')
     Color.new('lsp_background', get_color('lsp_background'))
     Color.new('line_highlight', get_color('line_highlight'))
@@ -227,6 +228,7 @@ function M.load()
     Color.new('selection', get_color('selection'))
     Color.new('guides', get_color('guides'))
     Color.new('line_numbers', get_color('line_numbers', 'shared'))
+    Color.new('blue2', get_color('blue2', 'light'))
     -- Color.new('lsp_background', '#b5e5fc')
     Color.new('lsp_background', get_color('lsp_background'))
     Color.new('line_highlight', get_color('line_highlight'))
@@ -360,9 +362,9 @@ function M.load()
   -- Group.new('StatusLineTerm', g.StatusLine, g.StatusLine, g.StatusLine) -- status line of current :terminal window
   Group.new('StatusLineTerm', c.bg, c.green, g.StatusLine)                      -- status line of current :terminal window
   Group.new('StatusLineTermNC', g.StatusLineNC, g.StatusLineNC, g.StatusLineNC) -- status line of non-current :terminal window
-  Group.new('TabLineFill', c.fg1, c.bg, no)
-  Group.new('TabLineSel', c.fg1, c.bg1, no)
-  Group.new('TabLine', c.fg1, c.bg, no)
+  Group.new('TabLineFill', c.fg1, c.bg1, no)
+  Group.new('TabLineSel', c.fg1, c.bg, no)
+  Group.new('TabLine', c.blue2, c.bg1, no)
   Group.new('Title', c.blue, c.none, b)                -- titles for output from ':set all', ':autocmd' etc.
   Group.new('Visual', c.none, c.selection, no)         -- Visual mode selection
   Group.new('VisualNOS', g.Visual, g.Visual, g.Visual) -- Visual mode selection when vim is 'Not Owning the Selection'. Only X11 Gui's gui-x11 and xterm-clipboard supports this.
