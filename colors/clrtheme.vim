@@ -1,1 +1,1 @@
-lua require('clrtheme')
+lua require('clrtheme').setup()
