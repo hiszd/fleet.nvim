@@ -6,7 +6,7 @@ local M = {}
 M.padding = " "
 
 ---@type string
-local PREFIX = "Clrtheme"
+local PREFIX = "Fleet"
 M.PREFIX = PREFIX
 
 return M
