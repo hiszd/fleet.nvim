@@ -768,7 +768,7 @@ return {
           ["TSParameter"] = { fg = c.TSParameter, bg = c.none },      -- For parameters of a function.
       -- Group.new('TSParameterReference' , g.TSParameter     , nil) -- For references to parameters of a function.
           ["TSMethod"] = { link = "Function", bg = c.none },          -- For method calls and definitions.
-          ["TSField"] = { fg = c.TSField, bg = c.none },              -- For fields.
+          ["TSField"] = { fg = c.blue, bg = c.none },                 -- For fields.
           ["TSProperty"] = { fg = c.TSProperty, bg = c.none },        -- Same as `TSField`.
       -- Group.new('TSConstructor'        , c.magenta_alt       , c.none)  -- For constructor calls and definitions: `{}` in Lua, and Java constructors
           ["TSConditional"] = { link = "Conditional", bg = c.none },  -- For keywords related to conditionnals
