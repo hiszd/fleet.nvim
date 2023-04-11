@@ -204,7 +204,7 @@ return {
           ["goDeclType"] = { fg = c.blue, bg = c.none },
           ["goBuiltins"] = { fg = c.orange, bg = c.none },
       -- Haskell
-          ["haskellType"] = { fg = c.fg1, bg = c.none },
+          ["haskellType"] = { fg = c.blue, bg = c.none },
           ["haskellIdentifier"] = { fg = c.fg1, bg = c.none },
           ["haskellSeparator"] = { fg = c.fg1, bg = c.none },
           ["haskellDelimiter"] = { fg = c.fg3, bg = c.none },
@@ -227,9 +227,9 @@ return {
           ["haskellChar"] = { fg = c.green, bg = c.none },
       -- C#
           ["csClass"] = { fg = c.yellow, bg = c.none },
-          ["csAttribute"] = { fg = c.yellow, bg = c.none },
+          ["csAttribute"] = { fg = c.lime, bg = c.none },
           ["csModifier"] = { fg = c.purple, bg = c.none },
-          ["csType"] = { fg = c.red, bg = c.none },
+          ["csType"] = { fg = c.blue, bg = c.none },
           ["csUnspecifiedStatement"] = { fg = c.blue, bg = c.none },
           ["csContextualStatement"] = { fg = c.purple, bg = c.none },
           ["csNewDecleration"] = { fg = c.red, bg = c.none },
@@ -327,8 +327,8 @@ return {
           ["javascriptDocParamName"] = { fg = c.fg3, bg = c.none },
           ["javascriptDocTags"] = { fg = c.fg3, bg = c.none },
           ["javascriptDocNotation"] = { fg = c.fg3, bg = c.none },
-          ["javascriptDocParamType"] = { fg = c.fg3, bg = c.none },
-          ["javascriptDocNamedParamType"] = { fg = c.fg3, bg = c.none },
+          ["javascriptDocParamType"] = { fg = c.blue_light, bg = c.none },
+          ["javascriptDocNamedParamType"] = { fg = c.blue_light, bg = c.none },
           ["javascriptBrackets"] = { fg = c.fg1, bg = c.none },
           ["javascriptDOMElemAttrs"] = { fg = c.fg1, bg = c.none },
           ["javascriptDOMEventMethod"] = { fg = c.fg1, bg = c.none },
@@ -435,7 +435,7 @@ return {
       -- Ruby
           ["rubyStringDelimiter"] = { fg = c.green, bg = c.none },
           ["rubyConstant"] = { fg = c.cyan, bg = c.none },
-          ["rubyAttribute"] = { fg = c.cyan, bg = c.none },
+          ["rubyAttribute"] = { fg = c.lime, bg = c.none },
           ["rubyRegexp"] = { fg = c.cyan, bg = c.none },
           ["rubySymbol"] = { fg = c.green, bg = c.none },
           ["rubyInterpolationDelimiter"] = { fg = c.cyan, bg = c.none },
@@ -485,8 +485,8 @@ return {
           ["xmlTagName"] = { fg = c.blue, bg = c.none },
           ["xmlEqual"] = { fg = c.blue, bg = c.none },
           ["docbkKeyword"] = { fg = c.cyan, bg = c.none, bold = true },
-          ["xmlDocTypeDecl"] = { fg = c.gray, bg = c.none },
-          ["xmlDocTypeKeyword"] = { fg = c.purple, bg = c.none },
+          ["xmlDocTypeDecl"] = { fg = c.blue, bg = c.none },
+          ["xmlDocTypeKeyword"] = { fg = c.blue, bg = c.none },
           ["xmlCdataStart"] = { fg = c.gray, bg = c.none },
           ["xmlCdataCdata"] = { fg = c.purple, bg = c.none },
           ["xmlAttrib"] = { fg = c.cyan, bg = c.none },
@@ -552,7 +552,7 @@ return {
           ["CmpItemKindValue"] = { fg = c.blue, bg = c.none },
           ["CmpItemKindEnumMember"] = { fg = c.blue, bg = c.none },
           ["CmpItemKindColor"] = { fg = c.bg1, bg = c.blue2 },
-          ["CmpItemKindTypeParameter"] = { fg = c.bg1, bg = c.cyan },
+          ["CmpItemKindTypeParameter"] = { fg = c.blue_light, bg = c.cyan },
       -- Telescope
           ["TelescopeSelection"] = { fg = c.purple, bg = c.none, bold = true }, -- selected item
           ["TelescopeSelectionCaret"] = { fg = c.green, bg = c.none },   -- selection caret
@@ -727,7 +727,7 @@ return {
       -- Group.new('TSNone', c.none, opts = {})
           ["TSString"] = { fg = c.gray1, bg = nil },
           ["TSTag"] = { fg = c.red, bg = nil },
-          ["TSTagAttribute"] = { fg = c.yellow, bg = nil },
+          ["TSTagAttribute"] = { fg = c.lime, bg = nil },
           ["TSTagDelimiter"] = { fg = c.gray, bg = nil },
           ["TSTodo"] = { fg = c.yellow, bg = nil },
           ["TSQualifier"] = { fg = c.red, bg = nil },
@@ -803,6 +803,19 @@ return {
           ["mailQuoted6"] = { fg = c.yellow, bg = c.none },
           ["mailURL"] = { fg = c.blue, bg = c.none },
           ["mailEmail"] = { fg = c.blue, bg = c.none },
+      -- Treesitter Defs
+          ["@type.return"] = { fg = c.blue_light, bg = c.none },
+          ["@type.parameter"] = { fg = c.blue_light, bg = c.none },
+          ["@constructor"] = { fg = c.yellow, bg = c.none },
+          ["@constant"] = { fg = c.violet, bg = c.none },
+          ["@constant.builtin.boolean"] = { fg = c.cyan, bg = c.none },
+          ["@constant.character"] = { fg = c.yellow, bg = c.none },
+          ["@constant.character.escape"] = { fg = c.cyan, bg = c.none },
+          ["@constant.numeric"] = { fg = c.yellow, bg = c.none },
+          ["@string"] = { fg = c.pink, bg = c.none },
+          ["@string.regexp"] = { fg = c.cyan, bg = c.none },
+          ["@string.special"] = { fg = c.yellow, underlined = true },
+          ["@comment"] = { fg = , bg = c.none },
     }
 
     return groups
