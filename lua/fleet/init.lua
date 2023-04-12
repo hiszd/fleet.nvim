@@ -24,6 +24,10 @@ M.setup = function()
   M.__g = require("fleet.groups").load(M.__z)
 
   for k, v in pairs(M.__g) do
+    -- if string.find(k, "@") then
+    --   print(k)
+    --   P(v)
+    -- end
     vim.api.nvim_set_hl(0, k, v)
   end
 
