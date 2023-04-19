@@ -16,7 +16,7 @@ return {
           ["Conditional"] = { fg = c.Conditional, bg = c.none },          -- if, then, else, endif, switch, etc.
           ["Repeat"] = { fg = c.cyan, bg = c.none },                      -- for, do, while, etc.
           ["Label"] = { fg = c.yellow, bg = c.none },                     -- case, default, etc.
-          ["Operator"] = { fg = c.gray_120, bg = c.none },                -- sizeof', '+', '*', etc.
+          ["Operator"] = { fg = c.cyan, bg = c.none },                    -- sizeof', '+', '*', etc.
           ["Keyword"] = { fg = c.cyan, bg = c.none },                     -- any other keyword
           ["Exception"] = { fg = c.Exception, bg = c.none },              -- try, catch, throw
           ["PreProc"] = { fg = c.PreProc, bg = c.none },                  -- generic Preprocessor
@@ -51,7 +51,7 @@ return {
           ["BufferVisibleMod"] = { fg = c.fg, bg = c.bg },
           ["BufferVisibleSign"] = { fg = c.fg, bg = c.bg },
           ["BufferVisibleTarget"] = { fg = c.red, bg = c.bg },
-          ["ColorColumn"] = { fg = c.gray_110, bg = c.none },                           --  used for the columns set with 'colorcolumn'
+          ["ColorColumn"] = { fg = c.none, bg = c.gray_20 },                            --  used for the columns set with 'colorcolumn'
           ["Conceal"] = { fg = c.blue, bg = c.none },                                   -- placeholder characters substituted for concealed text (see 'conceallevel')
           ["Cursor"] = { reverse = true },                                              -- the character under the cursor
           ["CursorIM"] = { reverse = true },                                            -- like Cursor, but used when in IME mode
@@ -102,8 +102,8 @@ return {
           ["VisualNOS"] = { link = "Visual" },                   -- Visual mode selection when vim is 'Not Owning the Selection'. Only X11 Gui's gui-x11 and xterm-clipboard supports this.
           ["WarningMsg"] = { fg = c.red, bg = c.none },          --  warning messages
           ["WildMenu"] = { fg = c.red, bg = c.selection, bold = true }, --  current match in 'wildmenu' completion
-          ["CursorColumn"] = { fg = c.none, bg = c.selection },  -- Current cursor column highlight
-          ["CursorLine"] = { fg = c.none, bg = c.cursorline },   -- Current cursor line highlight
+          ["CursorColumn"] = { fg = c.none, bg = c.none },       -- Current cursor column highlight
+          ["CursorLine"] = { fg = c.none, bg = c.gray_20 },      -- Current cursor line highlight
           ["ToolbarLine"] = { fg = c.fg1, bg = c.disabled },
           ["ToolbarButton"] = { fg = c.fg1, bg = c.bg, bold = true },
           ["NormalMode"] = { fg = c.accent, bg = c.none, reverse = true },
@@ -212,6 +212,7 @@ return {
           ["@field"] = { fg = c.violet },
           ["@brack"] = { fg = c.gray_120 },
           ["@lsp.type.property"] = { fg = c.violet },
+          ["@lsp.type.typeParameter"] = { link = "Type" },
           ["@lsp.type.decorator"] = {},
     }
 

@@ -1,12 +1,12 @@
-local M = {}
+local CN = {}
 ---------------------------------------------------------------------------//
 -- Constants
 ---------------------------------------------------------------------------//
 ---@type string
-M.padding = " "
+CN.padding = " "
 
 ---@type string
 local PREFIX = "Fleet"
-M.PREFIX = PREFIX
+CN.PREFIX = PREFIX
 
-return M
+return CN

@@ -6,12 +6,12 @@ local constants = require("constants")
 ---@field underline boolean?
 
 ---@type table
-M = {}
+U = {}
 
 --- Update highlight group for the highlight_tag with prefix added and return the group name
 ---@param highlight_tag string #Highlight group name without prefix
 ---@return string #Complete highlight group name
-M.hi = function(color, highlight_tag)
+U.hi = function(color, highlight_tag)
   if color.bg ~= nil and color.fg ~= nil then
     local highlight_group_name = table.concat({ constants.PREFIX, highlight_tag }, "_")
     pcall(function()
@@ -30,4 +30,4 @@ M.hi = function(color, highlight_tag)
   return ""
 end
 
-return M
+return U

@@ -1,17 +1,17 @@
 ---@type table
-local M = {}
+local C = {}
 
 ---@param color string #Color descriptor
 ---@param mode? "dark"|"light"|"shared" #Color mode ("dark" | "light" | "shared")
 local gcol = function(color, mode)
-  local pallete = M.colors(mode and mode or "dark")
+  local pallete = C.colors(mode and mode or "dark")
   if pallete[color] then
     return pallete[color]
   else
     return nil
   end
 end
-M.gcol = gcol
+C.gcol = gcol
 
 local COLORS = {
       ["dark"] = {
@@ -44,6 +44,7 @@ local COLORS = {
     guides = "#424242",
     lsp_background = "#54555e",
     line_highlight = "#171717",
+    selection = "#244072",
     normal = "#57c7ff",
     visual = "#68A247",
     insert = "#ff5c57",
@@ -102,7 +103,7 @@ local COLORS = {
 
 ---@param m "dark"|"light"|"shared" #Color mode ("dark" | "light" | "shared")
 ---@return table
-M.colors = function(m)
+C.colors = function(m)
   ---@type {[string]: string}
   local c = {
         ["none"] = "",
@@ -111,7 +112,7 @@ M.colors = function(m)
         ["fg3"] = COLORS["shared"]["gray_120"],
         ["disabled"] = COLORS["shared"]["gray_50"],
         ["line_numbers"] = COLORS["shared"]["gray_70"],
-        ["selection"] = COLORS["shared"]["gray_50"],
+        ["selection"] = COLORS[m]["selection"],
         ["white"] = COLORS["shared"]["white"],
         ["gray"] = COLORS["shared"]["gray_100"],
         ["gray1"] = COLORS["shared"]["gray_120"],
@@ -243,4 +244,4 @@ M.colors = function(m)
   return c
 end
 
-return M
+return C
