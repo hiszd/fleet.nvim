@@ -1,0 +1,9 @@
+C	fleet.txt	/*C*
+C.colors()	fleet.txt	/*C.colors()*
+CN.padding	fleet.txt	/*CN.padding*
+M.setup()	fleet.txt	/*M.setup()*
+PREFIX	fleet.txt	/*PREFIX*
+U	fleet.txt	/*U*
+U.hi()	fleet.txt	/*U.hi()*
+gcol()	fleet.txt	/*gcol()*
+gcurmod()	fleet.txt	/*gcurmod()*
